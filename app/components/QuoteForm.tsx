@@ -7,14 +7,22 @@ export default function QuoteForm() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending"); setError("");
+    setStatus("sending");
+    setError("");
     const fd = new FormData(e.currentTarget);
+
     try {
       const res = await fetch("/api/quote", { method: "POST", body: fd });
       if (!res.ok) throw new Error("Błąd serwera");
-      setStatus("ok"); e.currentTarget.reset();
-    } catch (err:any) {
-      setStatus("error"); setError(err.message || "Błąd");
+      setStatus("ok");
+      e.currentTarget.reset();
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Błąd");
+      }
+      setStatus("error");
     }
   }
 
