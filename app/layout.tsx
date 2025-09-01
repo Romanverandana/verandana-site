@@ -1,4 +1,6 @@
 export const metadata: Metadata = {
+  title: "Verandana — Nowoczesne ogrody zimowe z aluminium",
+  description: "Home Extension, klasyczne i sezonowe ogrody zimowe. Smukłe profile Allure 69, dachy Variant. Darmowa kalkulacja w 24h.",
   icons: {
     icon: [{ url: "/verandana.ico" }],
   },
